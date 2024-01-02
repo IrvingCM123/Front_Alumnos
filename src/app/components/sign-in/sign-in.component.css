@@ -1,0 +1,47 @@
+body, html {
+  margin: 0;
+  padding: 0;
+}
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+}
+
+.body {
+  background: black;
+  padding: 20px;
+  border-radius: 10px;
+  text-align: center;
+}
+
+.logo {
+  max-width: 85%;
+  height: auto;
+}
+
+h3, label, .form-control, a {
+  background: linear-gradient(to right, #ffffff, #cccccc);
+  -webkit-background-clip: text;
+  color: transparent;
+}
+
+.form-floating input {
+  background-color: transparent;
+  color: white;
+  border: 1px solid white;
+}
+
+.btn-primary {
+  background-color: orange;
+  color: white;
+  border: 1px solid white;
+}
+
+.img-preview {
+  max-width: 100%;
+  height: auto;
+}

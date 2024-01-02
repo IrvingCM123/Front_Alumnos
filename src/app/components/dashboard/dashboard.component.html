@@ -1,0 +1,54 @@
+<app-navbar></app-navbar>
+<body>
+
+<div class="container mt-2 text-center">
+  <div class="credential-card">
+    <h2>Credencial</h2>
+
+    <div>
+      <img src={{alumno?.url_imagen}} alt="" style="width: 40%; height: 100%;">
+    </div>
+    <div class="info-section">
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="col" class="gradient-text">Nombre: {{alumno?.nombre}} </th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th class="gradient-text">Licenciatura: {{alumno?.licenciatura}} </th>
+          </tr>
+          <tr>
+            <th class="gradient-text">Matrícula: {{alumno?.matricula}} </th>
+          </tr>
+          <tr>
+            <th class="gradient-text">Sexo: {{alumno?.sexo}} </th>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="date-time-section">
+      <h6>{{ vigencia }}</h6>
+      <h6>Fecha: {{ fechaActual }}</h6>
+      <h6>Hora: {{ horaActual }}</h6>
+    </div>
+    <div>
+      <qrcode [qrdata]="datosQR" [width]="125" [errorCorrectionLevel]="'M'"></qrcode>
+    </div>
+  </div>
+
+
+
+
+    <tbody>
+      <tr *ngFor="let item of listProduct">
+        <td>{{ item.name }}</td>
+        <td>{{ item.matricula }}</td>
+        <td>{{ item.carrera }}</td>
+      </tr>
+    </tbody>
+</div>
+
+</body>

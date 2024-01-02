@@ -1,0 +1,18 @@
+.custom-navbar {
+  background-color: #000000; /* Azul */
+}
+
+.custom-navbar .navbar-brand {
+  color: #ffffff; /* Blanco */
+}
+
+.custom-navbar .btn-outline-custom {
+  color: #ffffff; /* Azul */
+  border-color: #ffffff; /* Azul */
+}
+
+.custom-navbar .btn-outline-custom:hover {
+  color: #513838; /* Blanco */
+  background-color: #ffffff; /* Azul */
+  border-color: #ffffff; /* Azul */
+}

@@ -1,0 +1,31 @@
+<div class="wrapper">
+    <div *ngIf="!loading" class="body">
+        <img class="logo" src="https://firebasestorage.googleapis.com/v0/b/calculadora-93291.appspot.com/o/img%2FLogo.jpg?alt=media&token=b3765c3a-a8e6-4104-abe3-69aaf60164b4" alt="img login">
+        <h3>Crear Cuenta</h3>
+        <div class="form-floating mb-3">
+            <input type="text" [(ngModel)]="correo" class="form-control" placeholder="correo">
+            <label></label>
+        </div>
+        <div class="form-floating mb-3">
+            <input type="text" [(ngModel)]="matricula" class="form-control" placeholder="Ingrese matricula">
+            <label></label>
+        </div>
+        <div class="form-floating mb-3">
+            <input type="password" [(ngModel)]="password" class="form-control" placeholder="Ingrese password">
+            <label></label>
+        </div>
+        <div class="form-floating mb-3">
+            <input type="password" [(ngModel)]="confirmPassword" class="form-control" placeholder="Ingrese password de nuevo">
+            <label></label>
+        </div>
+        <div class="form-floating mb-3">
+          <input style="margin-top: 1rem;" type="file" (change)="GuardarImagen($event)">
+          <img class="img-preview" *ngIf="imageURL" [src]="imageURL" alt="Imagen Subida">
+      </div>
+        <div class="d-grid gap-2 mb-3">
+            <button type="button" (click)="addUser()" class="btn btn-primary btn-lg">Aceptar</button>
+        </div>
+        <a routerLink="/login">Volver</a>
+    </div>
+    <app-spinner *ngIf="loading"></app-spinner>
+</div>

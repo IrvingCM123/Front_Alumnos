@@ -1,7 +1,6 @@
+<app-navbar></app-navbar>
+
 <body>
-
-  <app-navbar></app-navbar>
-
   <div class="container">
       <div class="Nombre">
         <h1> {{alumno?.nombre}}  </h1>
@@ -23,6 +22,10 @@
       <div class="DatosQR">
         <qrcode [qrdata]="datosQR" [width]='tam' [margin]="2" [errorCorrectionLevel]="'M'" ></qrcode>
       </div>
+    </div>
+
+    <div class="Footer">
+
     </div>
 
 </body>

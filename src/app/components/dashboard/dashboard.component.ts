@@ -74,7 +74,7 @@ export class DashboardComponent implements OnInit {
     if (this.isLandscape) {
       this.tam = 150;
     } else {
-      this.tam = 340;
+      this.tam = 300;
     }
   }
 

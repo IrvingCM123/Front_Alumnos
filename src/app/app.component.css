@@ -1,3 +1,6 @@
 body {
   background-color: #EFF7F7;
+  width: 100vw;
+  height: max-content;
+  min-height: 100vh;
 }

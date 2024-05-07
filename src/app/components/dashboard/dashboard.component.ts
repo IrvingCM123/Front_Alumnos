@@ -1,13 +1,21 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, HostListener, OnInit } from '@angular/core';
 import { Product } from 'src/app/interfaces/product';
 import { ProductService } from 'src/app/services/product.service';
 import { MenuService } from 'src/app/services/menu.service';
 
+interface Alumno {
+  nombre: string,
+  matricula: string,
+  licenciatura: string,
+  campus: string,
+  url_imagen: string
+}
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
   styleUrls: ['./dashboard.component.css']
 })
+
 export class DashboardComponent implements OnInit {
   listProduct: Product[] = []
 
@@ -15,21 +23,21 @@ export class DashboardComponent implements OnInit {
   horaActual: string = '';
   vigencia: string = '';
   private intervalId: any;
-  public alumno: any;
+  public alumno: Alumno = {} as Alumno;
   public datosQR: any;
+  public isLandscape: boolean = false;
+  public tam: any = 300;
 
   constructor(
     private _productService: ProductService,
-    private _menuService: MenuService
-    ) { }
+    private _menuService: MenuService,
+  ) {
+    this.checkOrientation();
+  }
 
   ngOnInit(): void {
     this.ObtenerUsuario();
-    this.obtenerFechaHoraActual();
     this.actualizarVigencia();
-    this.intervalId = setInterval(() => {
-      this.obtenerFechaHoraActual();
-    }, 1000);
   }
 
   getProducts() {
@@ -39,9 +47,11 @@ export class DashboardComponent implements OnInit {
   }
 
   async ObtenerUsuario() {
-    this.alumno = await this._menuService.Usuario().toPromise();
-    this.alumno = this.alumno.data;
-    console.log(this.alumno);
+    this.alumno.nombre = 'Irving Rafael Conde Marín'
+    this.alumno.matricula = '201963033'
+    this.alumno.licenciatura = 'Ingeniería en Software'
+    this.alumno.campus = 'Ixtaczoquitlán'
+    this.alumno.url_imagen = 'https://firebasestorage.googleapis.com/v0/b/listasasistencia-f6f1d.appspot.com/o/images%2Fportada_love-live-sunshine-39.jpg?alt=media&token=c5b7ac01-feeb-4f49-b5eb-e5279af10f0f'
     this.GenerarQR();
   }
 
@@ -50,26 +60,26 @@ export class DashboardComponent implements OnInit {
   }
 
   actualizarVigencia() {
-    const hoy = new Date();
-    const inicioVigencia = new Date(hoy.getFullYear(), 0, 1);
-    const finVigencia = new Date(hoy.getFullYear() + 1, 11, 31);
 
-    this.vigencia = `Vigencia ${this.formatoFecha(inicioVigencia)} - ${this.formatoFecha(finVigencia)}`;
+    this.vigencia = `Vigencia Enero 2024 - Junio 2024`;
   }
 
-  obtenerFechaHoraActual() {
-    const now = new Date();
-    this.fechaActual = this.formatoFecha(now);
-    this.horaActual = this.formatoHora(now);
+  @HostListener('window:resize', ['$event'])
+  onResize(event: Event) {
+    this.checkOrientation();
   }
 
-  formatoFecha(date: Date): string {
-    const options: Intl.DateTimeFormatOptions = { year: 'numeric', month: 'long', day: 'numeric' };
-    return date.toLocaleDateString('es-ES', options);
+  private checkOrientation() {
+    this.isLandscape = window.innerWidth > window.innerHeight;
+    if (this.isLandscape) {
+      this.tam = 150;
+    } else {
+      this.tam = 340;
+    }
   }
 
-  formatoHora(date: Date): string {
-    const options: Intl.DateTimeFormatOptions = { hour: 'numeric', minute: 'numeric', second: 'numeric' };
-    return date.toLocaleTimeString('es-ES', options);
+  ngOnDestroy(): void {
+    window.removeEventListener('resize', this.onResize);
   }
+
 }

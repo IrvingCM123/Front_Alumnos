@@ -32,30 +32,33 @@ export class LoginComponent implements OnInit {
     if (this.username == '' || this.password == '') {
       this.toastr.error('Todos los campos son obligatorios', 'Error');
       return
+    } else {
+      console.log('Usuario: ', this.username);
+      this.router.navigate(['/dashboard'])
     }
 
     // Creamos el body
 
-    let user: User = {
-      correo: this.username,
-      contraseña: this.password
-    }
-
-    let inicioSesion = [];
-    inicioSesion[0] = user.correo;
-    inicioSesion[1] = user.contraseña;
-
-    this.loading = true;
-    this._userService.login(inicioSesion).subscribe({
-      next: (token: any) => {
-        localStorage.setItem('token', token.token);
-        this.router.navigate(['/dashboard'])
-      },
-      error: (e: HttpErrorResponse) => {
-        this._errorService.msjError(e);
-        this.loading = false
-      }
-    })
+    //let user: User = {
+    //  correo: this.username,
+    //  contraseña: this.password
+    //}
+//
+    //let inicioSesion = [];
+    //inicioSesion[0] = user.correo;
+    //inicioSesion[1] = user.contraseña;
+//
+    //this.loading = true;
+    //this._userService.login(inicioSesion).subscribe({
+    //  next: (token: any) => {
+    //    localStorage.setItem('token', token.token);
+    //    this.router.navigate(['/dashboard'])
+    //  },
+    //  error: (e: HttpErrorResponse) => {
+    //    this._errorService.msjError(e);
+    //    this.loading = false
+    //  }
+    //})
   }
 
 

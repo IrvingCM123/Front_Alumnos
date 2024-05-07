@@ -1,48 +1,108 @@
 body {
-  background-color: #000; /* Código de color para negro */
-  color: #000000; /* Cambia el color del texto si es necesario para que sea legible en el fondo negro */
-  margin: 0; /* Elimina los márgenes predeterminados del cuerpo para ocupar toda la pantalla */
-  font-family: 'Arial', sans-serif; /* Cambia la fuente del texto según tus preferencias */
+  background-color: #EFF7F7;
+  color: #000000;
+  margin: 0;
+  font-family: 'Arial', sans-serif;
+  width: 95.2vw;
 }
 
-.credential-card {
-  max-width: 300px;
-  margin: 0 auto;
-  background-color: #000;
-  color: #000000; /* Cambiado a blanco */
-}
-.info-section {
-  background-color: #000; /* Cambiado a negro */
-  color: #fff; /* Cambiado a blanco */
-  padding: 10px; /* Ajustado según sea necesario */
-  border-radius: 8px; /* Ajustado según sea necesario */
-}
-
-table {
+.container {
   width: 100%;
-  color: #000000; /* Cambiado a blanco */
+  height: 100vh;
+  display: grid;
+  grid-template-rows: 7% 25% 7% 40%;
+  grid-template-areas: "Nombre" "Datos" "Fecha" "DatosQR";
+  margin: 0;
+  padding: 0;
 }
 
-table th, table td {
-  padding: 8px;
-  text-align: left;
-  border: 1px solid #000000; /* Cambiado a blanco */
+.Nombre {
+  grid-area: Nombre;
+  display: flex;
+  justify-content: left;
+  align-items: center;
+  margin-left: 5%;
 }
 
-.date-time-section {
-  margin-top: 10px;
-  color: #ffffff; /* Cambiado a blanco */
+.Nombre h1 {
+  font-size: 120%;
+  color: #12307A;
+  margin: 0;
+  padding: 0;
+  font-weight: 600;
 }
 
-.gradient-text {
-  background: linear-gradient(to right, #ffffff, #cccccc);
-  -webkit-background-clip: text;
-  color: transparent;
+.Datos {
+  grid-area: Datos;
+  display: grid;
+  grid-template-columns: 40% 60%;
+  margin-left: 5%;
 }
 
-/* Estilos para la sección de fecha y hora */
-.date-time-section h6 {
-  background: linear-gradient(to right, #ffffff, #cccccc);
-  -webkit-background-clip: text;
-  color: transparent;
+.Datos img {
+  width: 100%;
+  height: 90%;
+  border-radius: 15px;
+}
+
+.Datos section {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: left;
+  padding-left: 5%;
+}
+
+.Datos section h3 {
+  font-size: 100%;
+  color: #232323;
+  margin: 2% 0;
+  padding: 0;
+  font-weight: 600;
+}
+
+.Fecha {
+  grid-area: Fecha;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-left: 5%;
+}
+
+.Fecha h6 {
+  font-size: 110%;
+  color: #232323;
+  margin: 5% 0;
+  padding: 0;
+  font-weight: 600;
+}
+
+.DatosQR {
+  grid-area: DatosQR;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-left: 5%;
+}
+
+.qrcode {
+  width: 00%;
+}
+
+@media screen and (orientation: landscape) {
+  .container {
+    grid-template-rows: 7% 25% 7% 40%;
+    grid-template-areas: "Nombre" "Datos" "Fecha" "DatosQR";
+    margin: 0;
+    padding: 0;
+    row-gap: 5%;
+  }
+
+  .Fecha{
+    margin-top: 5%;
+  }
+
+  .DatosQR{
+    margin-top: 2%;
+  }
 }

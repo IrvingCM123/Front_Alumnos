@@ -1,18 +1,43 @@
 .custom-navbar {
-  background-color: #000000; /* Azul */
+  background-color: #2B3651;
 }
 
 .custom-navbar .navbar-brand {
-  color: #ffffff; /* Blanco */
+  color: #ffffff;
 }
 
 .custom-navbar .btn-outline-custom {
-  color: #ffffff; /* Azul */
-  border-color: #ffffff; /* Azul */
+  color: #ffffff;
+  border-color: #ffffff;
+  padding: 1% 3px;
 }
 
 .custom-navbar .btn-outline-custom:hover {
-  color: #513838; /* Blanco */
-  background-color: #ffffff; /* Azul */
-  border-color: #ffffff; /* Azul */
+  color: #513838;
+  background-color: #ffffff;
+  border-color: #ffffff;
+}
+
+button span {
+  font-size: 100%;
+  margin: 0;
+  font-weight: bold;
+
+  display: none;
+}
+
+button:hover span {
+  display: inline;
+  animation: slide 1s forwards;
+}
+
+button i:hover {
+  color: #000000;
+  display: inline;
+}
+
+.navbar-brand {
+  font-size: 120%;
+  margin: 1px;
+  padding: 1px;
 }
